@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 api(projects.utils)
                 api(projects.protobuf.protobufInputStream)
+                api(projects.protobuf.protobufWellKnownTypes)
                 api(libs.kotlinx.io.core)
             }
         }

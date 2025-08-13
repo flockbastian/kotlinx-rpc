@@ -14,7 +14,9 @@ import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.withType
 
 @InternalRpcApi
-public fun Project.configureLocalProtocGenDevelopmentDependency() {
+public fun Project.configureLocalProtocGenDevelopmentDependency(
+    sourceSetSuffix: String = "Test",
+) {
     val globalRootDir: String by extra
 
     rpcExtension().protoc.plugins {
@@ -32,7 +34,7 @@ public fun Project.configureLocalProtocGenDevelopmentDependency() {
     }
 
     tasks.withType<BufGenerateTask>().configureEach {
-        if (name.endsWith("Test")) {
+        if (name.endsWith(sourceSetSuffix)) {
             val includedBuild = gradle.includedBuild("protoc-gen")
             dependsOn(includedBuild.task(":grpc:jar"))
             dependsOn(includedBuild.task(":protobuf:jar"))

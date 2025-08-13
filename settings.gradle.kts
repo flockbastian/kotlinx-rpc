@@ -31,6 +31,7 @@ dependencyResolutionManagement {
 include(":protobuf")
 includePublic(":protobuf:protobuf-core")
 includePublic(":protobuf:protobuf-input-stream")
+includePublic(":protobuf:protobuf-well-known-types")
 
 include(":grpc")
 includePublic(":grpc:grpc-core")
